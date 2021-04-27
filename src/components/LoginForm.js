@@ -1,13 +1,14 @@
 import React from 'react';
-import { Form, FormGroup, Label, Input, Message, Button } from '../components/FormComponents';
+import { Container, FormGroup, Label, Input, Button, Title } from '../components/FormComponents';
 export const LoginForm = () => {
 	return (
-		<Form>
+		<Container>
 			<FormGroup>
-				<Label>Hola</Label>
-				<Input id='Hola' placeholder='user' />
-				<Button type='submit'>Login</Button>
+				<Title>Login</Title>
+				<Input type="text" placeholder='username' />
+				<Input type="password" placeholder='password' />
+				<Button type='submit'>Sign in</Button>
 			</FormGroup>
-		</Form>
+		</Container>
 	);
 };

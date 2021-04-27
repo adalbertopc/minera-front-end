@@ -1,48 +1,68 @@
 import styled from 'styled-components';
+import bg from '../img/bg.jpg'
 
-export const Form = styled.form`
-	background: #dedede;
+export const Container = styled.div`
+	height: 100vh;
+
+	display: grid;
+	place-items: center;
+	background: url(${bg});
+	background-size: cover;
 `;
 
-export const FormGroup = styled.div`
-	color: palevioletred;
-	display: block;
-	width: 300px;
-	margin: 50px auto;
+export const FormGroup = styled.form`
+	display: grid;
+	gap: 25px;
+	width: 500px;
+	margin: 0px auto;
+	border-radius: 20px;
+	padding: 40px;
+	background: rgba(16 18 27 / 40%);
+	backdrop-filter: blur(20px);
+	box-shadow: -1px 3px 8px -1px rgb(0 0 0 / 20%);
 `;
 
-export const Label = styled.label`
-	margin-bottom: 0.5em;
-	color: palevioletred;
-	display: block;
+export const Title = styled.h2`
+	color: #fff;
+	font: 600 30px poppins;
 `;
 
 export const Input = styled.input`
-	padding: 0.5em;
-	color: palevioletred;
-	background: papayawhip;
-	border: none;
-	border-radius: 3px;
 	width: 100%;
-	margin-bottom: 0.5em;
+	padding: 15px 20px;
+	color: #fff;
+	background: rgb(146 151 179 / 13%);
+	font: 600 14px poppins;
+	transition: background .3s ease;
+	border: none;
+	border-radius: 12px;
+	outline: none;
+
+	&::placeholder{
+		color: rgba(255, 255, 255, .6);
+	}
+
+	&:focus {
+		background: rgba(16 18 27 / 40%);
+	}
 `;
 
-export const Message = styled.label`
-	margin-bottom: 0.5em;
-	color: palevioletred;
-	display: block;
-`;
 
 export const Button = styled.button`
+	width: 100%;
 	padding: 10px 20px;
-	background: green;
+
+	font: bold 16px Poppins;
+	background: ${({theme}) => theme.colors.primary};
 	color: white;
+	transition: background .3s ease;
+
 	border: none;
-	border-radius: 5px;
+	border-radius: 12px;
 	cursor: pointer;
-	opacity: 0.8;
-	transition: opacity 0.3s ease;
-	&:hover {
-		opacity: 1;
+	outline: none;
+
+	&:hover{
+		background: ${({theme}) => theme.hov.primary};
 	}
 `;
