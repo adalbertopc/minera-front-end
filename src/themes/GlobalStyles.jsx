@@ -8,7 +8,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font: 400 16px Poppins; 
+    font: 400 16px Poppins;
+    min-height: 100vh;
   }
 `
 
