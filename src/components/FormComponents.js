@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import bg from '../img/bg.jpg'
+import theme from '../themes/theme';
 
 export const Container = styled.div`
 	height: 100vh;
@@ -17,9 +18,9 @@ export const FormGroup = styled.form`
 	margin: 0px auto;
 	border-radius: 20px;
 	padding: 40px;
-	background: rgba(16 18 27 / 40%);
+	background: ${({theme}) => theme.colors.themebg};
 	backdrop-filter: blur(20px);
-	box-shadow: -1px 3px 8px -1px rgb(0 0 0 / 20%);
+	box-shadow: ${({theme}) => theme.shadow.primary};
 `;
 
 export const Title = styled.h2`
@@ -31,7 +32,7 @@ export const Input = styled.input`
 	width: 100%;
 	padding: 15px 20px;
 	color: #fff;
-	background: rgb(146 151 179 / 13%);
+	background: ${({theme}) => theme.colors.themebg2};
 	font: 600 14px poppins;
 	transition: background .3s ease;
 	border: none;
@@ -43,10 +44,9 @@ export const Input = styled.input`
 	}
 
 	&:focus {
-		background: rgba(16 18 27 / 40%);
+		background: ${({theme}) => theme.colors.theme};
 	}
-`;
-
+`
 
 export const Button = styled.button`
 	width: 100%;

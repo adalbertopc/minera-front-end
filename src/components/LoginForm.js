@@ -28,7 +28,7 @@ export const LoginForm = () => {
 	};
 
 	if (auth.logged) {
-		return <Redirect to='/dashboard' />;
+		return <Redirect to='/' />;
 	}
 
 	return (
