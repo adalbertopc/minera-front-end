@@ -4,6 +4,8 @@ import { HolaMundo } from '../components/HolaMundo';
 import { AdiosMundo } from '../components/AdiosMundo';
 import Nav from '../components/Nav';
 import styled from 'styled-components';
+import { CongestionsPage } from '../pages/CongestionsPage';
+import { UsersPage } from '../pages/UsersPage';
 
 const Container = styled.div`
 	height: 100vh;
@@ -19,7 +21,8 @@ export const DashboardRoutes = () => {
 				<Nav />
 				<Switch>
 					<Route exact path='/hola' component={HolaMundo} />
-					<Route exact path='/adios' component={AdiosMundo} />
+					<Route exact path='/users' component={UsersPage} />
+					<Route exact path='/congestions' component={CongestionsPage} />
 					<Route exact path='/' component={AdiosMundo} />
 				</Switch>
 			</Container>
