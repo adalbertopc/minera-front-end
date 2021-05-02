@@ -1,21 +1,10 @@
-import { LoginForm } from './components/LoginForm';
-import Dashboard from './components/dashboard'
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
-
+import { AuthProvider } from './auth/AuthContext';
+import { AppRouter } from './routes/AppRouter';
 function App() {
 	return (
-		<Router>
-			<div>
-				<Switch>
-					<Route path='/dashboard'>
-						<Dashboard />
-					</Route>
-					<Route path='/'>
-						<LoginForm />
-					</Route>
-				</Switch>
-			</div>
-		</Router>
+		<AuthProvider>
+			<AppRouter />
+		</AuthProvider>
 	);
 }
 
