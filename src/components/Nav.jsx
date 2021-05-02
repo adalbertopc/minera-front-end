@@ -54,14 +54,14 @@ export default function Nav() {
 					</Link>
 				</div>
 				<div>
-					<Link to='/adios'>
+					<Link to='/users'>
 						<span class='material-icons'>account_circle</span> Users
 					</Link>
 				</div>
 				<div>
-					<a href='!#'>
+					<Link to='/congestions'>
 						<span class='material-icons'>report</span> Congestions
-					</a>
+					</Link>
 				</div>
 				<div>
 					<a href='!#'>
