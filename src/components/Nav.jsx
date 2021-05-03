@@ -1,14 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
+import { AuthContext } from '../auth/AuthContext';
 
 const Container = styled.div`
 	display: grid;
-	grid-template-rows: 110px 300px;
+	grid-template-rows: 110px 1fr 100px;
 	gap: 40px;
 
-	padding: 0 50px;
+	padding: 0 50px 40px 50px;
 	background: ${({ theme }) => theme.colors.secondary};
 `;
 
@@ -21,6 +22,7 @@ const Name = styled.h2`
 
 const NavS = styled.nav`
 	display: grid;
+  height: 300px;
 
 	a {
 		display: flex;
@@ -42,10 +44,38 @@ const NavS = styled.nav`
 	}
 `;
 
+const BtnLogout = styled.button`
+  font: bold 16px poppins;
+  margin: 55px 30px 0 30px;
+  background: ${({theme}) => theme.colors.primary};
+  border: none;
+  color: white;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &:hover {
+    background: ${({theme}) => theme.hov.primary}
+  }
+
+  span {
+    font-size: 20px;
+    margin-right: 5px;
+  }
+
+`
+
 export default function Nav() {
+
+  const {auth} = useContext(AuthContext)
+
 	return (
 		<Container>
-			<Name>EduardoRL</Name>
+			<Name>{auth.user.username}</Name>
 
 			<NavS>
 				<div>
@@ -69,6 +99,11 @@ export default function Nav() {
 					</a>
 				</div>
 			</NavS>
+
+      <BtnLogout>
+        <span class="material-icons">logout</span>
+        logout
+      </BtnLogout>
 		</Container>
 	);
 }
