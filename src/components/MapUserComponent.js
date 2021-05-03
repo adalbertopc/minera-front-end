@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { SocketContext } from '../context/SocketContext';
-import { useMapbox, seleccionarCarro, seleccionarSona } from '../hooks/useMapbox';
+import { useMapbox, seleccionarCarro, seleccionarSona, informacionCarro } from '../hooks/useMapbox';
 import { v4 } from 'uuid';
 
 let bloqueadoBtn = true;
@@ -18,7 +18,7 @@ const puntoInicial = {
 	zoom: 15,
 };
 
-export const MapaUsuario = () => {
+export const MapUserComponent = () => {
 	const {
 		agregarSona,
 		agregarLayers,
@@ -116,7 +116,10 @@ export const MapaUsuario = () => {
 		cantidad: '',
 		fecha: new Date(),
 	});
-
+	const [datos1, setDatos1] = useState({
+		conductor: '',
+		tipoCarro: '',
+	});
 	const handleChange = (e) => {
 		setDatos({
 			...datos,
@@ -137,6 +140,30 @@ export const MapaUsuario = () => {
 			'fecha',
 			datos.fecha
 		);
+	};
+
+	const addCarro = (e) => {
+		if (datos1.conductor.trim().length == 0 || datos1.tipoCarro.trim() == 0) {
+			console.log('Falta informacion');
+		} else {
+			seleccionarCarro(true);
+			guardarCarro(e);
+			guardarCarga(e);
+			console.log('Agregar carro');
+		}
+	};
+
+	const guardarCarro = (e) => {
+		e.preventDefault();
+		informacionCarro(datos1);
+		console.log('conductor ', datos1.conductor, ' carro ', datos1.tipoCarro);
+	};
+
+	const handleChangeCarro = (e) => {
+		setDatos1({
+			...datos1,
+			[e.target.name]: e.target.value,
+		});
 	};
 
 	return (
@@ -160,11 +187,35 @@ export const MapaUsuario = () => {
 				Carga
 			</button>
 
+			<button className='btn btn-2' onClick={addCarro}>
+				Poner carro
+			</button>
+
 			<div className='formulario'>
-				<span className='encabezado'>Cargar vehiculo</span>
-				<form onSubmit={guardarCarga}>
-					<input type='text' name='material' onChange={handleChange} />
-					<input type='text' name='cantidad' onChange={handleChange} />
+				<span>Vehiculo</span>
+				<form onSubmit={addCarro}>
+					<input
+						placeholder='Conductor'
+						name='conductor'
+						onChange={handleChangeCarro}
+					/>
+					<input
+						placeholder='Tipo carro'
+						name='tipoCarro'
+						onChange={handleChangeCarro}
+					/>
+					<input
+						type='text'
+						placeholder='Material'
+						name='material'
+						onChange={handleChange}
+					/>
+					<input
+						type='text'
+						placeholder='Cantidad'
+						name='cantidad'
+						onChange={handleChange}
+					/>
 					<button>Guardar</button>
 				</form>
 			</div>

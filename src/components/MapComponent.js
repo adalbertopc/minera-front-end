@@ -135,43 +135,16 @@ export const MapComponent = () => {
 		console.log(datosSona.descripcion, datosSona.fecha);
 	};
 
-	const addCarro = () => {
-		if (datos.conductor.trim().length == 0 || datos.tipoCarro.trim() == 0) {
-			console.log('Falta informacion');
-		} else {
-			seleccionarCarro(true);
-			console.log('Agregar carro');
-		}
-	};
-
-	const [datos, setDatos] = useState({
-		conductor: '',
-		tipoCarro: '',
-	});
-
 	const [datosSona, setDatosSona] = useState({
 		descripcion: '',
 		fecha: new Date(),
 	});
-
-	const handleChangeCarro = (e) => {
-		setDatos({
-			...datos,
-			[e.target.name]: e.target.value,
-		});
-	};
 
 	const handleChangeSona = (e) => {
 		setDatosSona({
 			...datosSona,
 			[e.target.name]: e.target.value,
 		});
-	};
-
-	const guardarCarro = (e) => {
-		e.preventDefault();
-		informacionCarro(datos);
-		console.log('conductor ', datos.conductor, ' carro ', datos.tipoCarro);
 	};
 
 	const guardarSona = (e) => {
@@ -191,28 +164,6 @@ export const MapComponent = () => {
 			<button className='btn bt-1' onClick={addSona}>
 				Poner Zona
 			</button>
-			<button className='btn btn-2' onClick={addCarro}>
-				Poner carro
-			</button>
-
-			<div className='formulario'>
-				<span>Vehiculo</span>
-				<form onSubmit={guardarCarro}>
-					<input
-						placeholder='Conductor'
-						name='conductor'
-						onChange={handleChangeCarro}
-					/>
-					<input
-						placeholder='Tipo carro'
-						name='tipoCarro'
-						onChange={handleChangeCarro}
-					/>
-
-					<button>Guardar</button>
-				</form>
-			</div>
-
 			<div className='formulario form-2'>
 				<span>Zona</span>
 				<form onSubmit={addSona}>

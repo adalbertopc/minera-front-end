@@ -7,7 +7,7 @@ import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-direct
 import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import polyline from '@mapbox/polyline';
-import { activarEntrega } from '../pages/MapUserPage';
+import { activarEntrega } from '../components/MapUserComponent';
 
 mapboxgl.accessToken =
 	'pk.eyJ1Ijoia2xlcml0aCIsImEiOiJja2dzOHdteDkwM2tnMndxMWhycnY3Ymh3In0.Zis8hP6HuwcywtgUhfeZoQ';
@@ -315,7 +315,6 @@ export const useMapbox = (puntoInicial) => {
 				//Update the data for the route, updating the visual.
 				if (!(mapa.current?.getSource('route' + e.id) === null)) {
 					mapa.current?.getSource('route' + e.id).setData(routeLine);
-
 					var detail = '';
 					var collision = '';
 					var emoji = '';

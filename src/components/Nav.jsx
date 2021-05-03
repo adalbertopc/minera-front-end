@@ -100,9 +100,9 @@ export default function Nav() {
 					</Link>
 				</div>
 				<div>
-					<a href='!#'>
+					<Link to='/user-map'>
 						<span class='material-icons'>local_shipping</span> Package
-					</a>
+					</Link>
 				</div>
 			</NavS>
 
