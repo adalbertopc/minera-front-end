@@ -18,9 +18,9 @@ const Container = styled.div`
 const User = styled.div`
 	display: flex;
 	flex-direction: column;
-	justify-content:  center;
+	justify-content: center;
 	align-items: center;
-	
+
 	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
 	h2 {
@@ -59,32 +59,31 @@ const NavS = styled.nav`
 `;
 
 const BtnLogout = styled.button`
-  font: bold 16px poppins;
-  margin: 55px 30px 0 30px;
-  background: ${({theme}) => theme.colors.primary};
-  border: none;
-  color: white;
-  border-radius: 10px;
-  transition: background 0.3s ease, opacity 0.3s ease;
-  cursor: pointer;
+	font: bold 16px poppins;
+	margin: 55px 30px 0 30px;
+	background: ${({ theme }) => theme.colors.primary};
+	border: none;
+	color: white;
+	border-radius: 10px;
+	transition: background 0.3s ease, opacity 0.3s ease;
+	cursor: pointer;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
-	opacity: .5;
-  
-  &:hover {
-    background: ${({theme}) => theme.hov.primary};
+	opacity: 0.5;
+
+	&:hover {
+		background: ${({ theme }) => theme.hov.primary};
 		opacity: 1;
-  }
+	}
 
-  span {
-    font-size: 20px;
-    margin-right: 5px;
-  }
-
-`
+	span {
+		font-size: 20px;
+		margin-right: 5px;
+	}
+`;
 
 export default function Nav() {
 	const { auth, dispatch } = useContext(AuthContext);
@@ -104,8 +103,8 @@ export default function Nav() {
 
 			<NavS>
 				<div>
-					<Link to='/hola'>
-						<span className='material-icons'>place</span> Map
+					<Link to='/'>
+						<span class='material-icons'>place</span> Map
 					</Link>
 				</div>
 				<div>
@@ -119,9 +118,9 @@ export default function Nav() {
 					</Link>
 				</div>
 				<div>
-					<a href='!#'>
-						<span className='material-icons'>local_shipping</span> Package
-					</a>
+					<Link to='/user-map'>
+						<span class='material-icons'>local_shipping</span> Package
+					</Link>
 				</div>
 			</NavS>
 
