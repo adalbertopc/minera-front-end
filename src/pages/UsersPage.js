@@ -1,10 +1,16 @@
 import React from 'react';
 import { Users } from '../components/Users';
+import styled from 'styled-components';
+
+const Title = styled.h1`
+	color: #fff;
+	margin: 50px;
+`
 
 export const UsersPage = () => {
 	return (
 		<div>
-			<h1>Users</h1>
+			<Title>Users</Title>
 			<Users />
 		</div>
 	);
