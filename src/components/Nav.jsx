@@ -85,7 +85,7 @@ export default function Nav() {
 
 			<NavS>
 				<div>
-					<Link to='/hola'>
+					<Link to='/'>
 						<span class='material-icons'>place</span> Map
 					</Link>
 				</div>

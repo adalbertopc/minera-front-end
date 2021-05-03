@@ -6,6 +6,7 @@ import Nav from '../components/Nav';
 import styled from 'styled-components';
 import { CongestionsPage } from '../pages/CongestionsPage';
 import { UsersPage } from '../pages/UsersPage';
+import { MapPage } from '../pages/MapPage';
 
 const Container = styled.div`
 	height: 100vh;
@@ -23,7 +24,7 @@ export const DashboardRoutes = () => {
 					<Route exact path='/hola' component={HolaMundo} />
 					<Route exact path='/users' component={UsersPage} />
 					<Route exact path='/congestions' component={CongestionsPage} />
-					<Route exact path='/' component={AdiosMundo} />
+					<Route exact path='/' component={MapPage} />
 				</Switch>
 			</Container>
 		</>
