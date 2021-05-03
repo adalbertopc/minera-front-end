@@ -15,11 +15,23 @@ const Container = styled.div`
 	background: ${({ theme }) => theme.colors.secondary};
 `;
 
-const Name = styled.h2`
-	display: grid;
-	place-items: center;
-	color: white;
+const User = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
 	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+	h2 {
+		font-size: 28px;
+		color: white;
+	}
+
+	span {
+		color: white;
+		font-size: 10px;
+	}
 `;
 
 const NavS = styled.nav`
@@ -53,15 +65,18 @@ const BtnLogout = styled.button`
 	border: none;
 	color: white;
 	border-radius: 10px;
-	transition: background 0.3s ease;
+	transition: background 0.3s ease, opacity 0.3s ease;
 	cursor: pointer;
 
 	display: flex;
 	align-items: center;
 	justify-content: center;
 
+	opacity: 0.5;
+
 	&:hover {
 		background: ${({ theme }) => theme.hov.primary};
+		opacity: 1;
 	}
 
 	span {
@@ -81,7 +96,10 @@ export default function Nav() {
 
 	return (
 		<Container>
-			<Name>{auth.user.username}</Name>
+			<User>
+				<h2>{auth.user.username}</h2>
+				<span>{auth.user.userType}</span>
+			</User>
 
 			<NavS>
 				<div>
@@ -91,12 +109,12 @@ export default function Nav() {
 				</div>
 				<div>
 					<Link to='/users'>
-						<span class='material-icons'>account_circle</span> Users
+						<span className='material-icons'>account_circle</span> Users
 					</Link>
 				</div>
 				<div>
 					<Link to='/congestions'>
-						<span class='material-icons'>report</span> Congestions
+						<span className='material-icons'>report</span> Congestions
 					</Link>
 				</div>
 				<div>
