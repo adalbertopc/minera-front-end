@@ -1,5 +1,7 @@
 import React from 'react';
 import { useFetch } from '../hooks/useFetch';
+import {Container} from '../components/TableComponents';
+import User from '../components/User'
 
 export const Users = () => {
 	const { data, isLoading } = useFetch('user');
@@ -10,11 +12,14 @@ export const Users = () => {
 		<div>
 			{!data.error ? (
 				data.data.length > 0 ? (
-					<>
-						{data.data.map((user) => {
-							console.log(user);
-						})}
-					</>
+					<Container>
+						{data.data.map((user) => (
+							<User 
+								key={user.username}
+								user={user}
+							/>
+						))}
+					</Container>
 				) : (
 					<h1>No data</h1>
 				)

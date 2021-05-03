@@ -1,5 +1,8 @@
 import React from 'react';
 import { useFetch } from '../hooks/useFetch';
+import Congestion from './Congestion'
+import {Container} from '../components/TableComponents';
+
 
 export const Congestions = () => {
 	const { data, isLoading } = useFetch('congestions');
@@ -10,11 +13,14 @@ export const Congestions = () => {
 		<div>
 			{!data.error ? (
 				data.data.length > 0 ? (
-					<>
-						{data.data.map((congestion) => {
-							console.log(congestion);
-						})}
-					</>
+					<Container>
+						{data.data.map((congestion) => (
+							<Congestion 
+								key={congestion.id}
+								congestion={congestion}
+							/>
+						))}
+					</Container>
 				) : (
 					<h1>No data</h1>
 				)
