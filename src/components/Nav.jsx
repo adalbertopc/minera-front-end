@@ -1,8 +1,10 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 import { AuthContext } from '../auth/AuthContext';
+import { types } from '../constants/types';
+import { deleteCookie } from '../helpers/deleteCookie';
 
 const Container = styled.div`
 	display: grid;
@@ -22,7 +24,7 @@ const Name = styled.h2`
 
 const NavS = styled.nav`
 	display: grid;
-  height: 300px;
+	height: 300px;
 
 	a {
 		display: flex;
@@ -45,33 +47,37 @@ const NavS = styled.nav`
 `;
 
 const BtnLogout = styled.button`
-  font: bold 16px poppins;
-  margin: 55px 30px 0 30px;
-  background: ${({theme}) => theme.colors.primary};
-  border: none;
-  color: white;
-  border-radius: 10px;
-  transition: background 0.3s ease;
-  cursor: pointer;
+	font: bold 16px poppins;
+	margin: 55px 30px 0 30px;
+	background: ${({ theme }) => theme.colors.primary};
+	border: none;
+	color: white;
+	border-radius: 10px;
+	transition: background 0.3s ease;
+	cursor: pointer;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  &:hover {
-    background: ${({theme}) => theme.hov.primary}
-  }
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
-  span {
-    font-size: 20px;
-    margin-right: 5px;
-  }
+	&:hover {
+		background: ${({ theme }) => theme.hov.primary};
+	}
 
-`
+	span {
+		font-size: 20px;
+		margin-right: 5px;
+	}
+`;
 
 export default function Nav() {
+	const { auth, dispatch } = useContext(AuthContext);
 
-  const {auth} = useContext(AuthContext)
+	const handleLogut = () => {
+		dispatch(types.logout, {});
+		deleteCookie('token');
+		window.location.replace('/login');
+	};
 
 	return (
 		<Container>
@@ -100,10 +106,10 @@ export default function Nav() {
 				</div>
 			</NavS>
 
-      <BtnLogout>
-        <span class="material-icons">logout</span>
-        logout
-      </BtnLogout>
+			<BtnLogout onClick={handleLogut}>
+				<span class='material-icons'>logout</span>
+				logout
+			</BtnLogout>
 		</Container>
 	);
 }
